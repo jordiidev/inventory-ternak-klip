@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { supabase } from "../services/supabaseClient"
+import { formatDate } from "../utils/formatDate"
 
 export default function useProducts() {
   const [products, setProducts] = useState([])
@@ -10,8 +11,17 @@ export default function useProducts() {
       .from("products")
       .select("*")
 
-    if (!error) setProducts(data)
+    if (!error) {
+    const formatted = data.map((p) => ({
+      ...p,
+      last_updated_formatted: formatDate(p.last_updated)
+    }));
+
+    // setProducts(formatted);
+
+    setProducts(formatted)
     setLoading(false)
+  }
   }
 
   useEffect(() => {

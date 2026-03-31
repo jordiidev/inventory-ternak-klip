@@ -2,6 +2,7 @@ import useProducts from "../hooks/useProducts";
 import StatsCard from "../components/dashboard/StatsCard";
 import RecentProducts from "../components/dashboard/RecentProducts";
 import Loader from "../components/common/Loader";
+import { formatDate } from '../utils/formatDate'
 
 export default function Dashboard() {
   const { products, loading } = useProducts();
@@ -9,12 +10,19 @@ export default function Dashboard() {
   const totalProducts = products.length;
   const totalStock = products.reduce((sum, p) => sum + p.stock_count, 0);
 
-  const lastUpdated =
+  const latestProduct =
     products.length > 0
-      ? new Date(
-          Math.max(...products.map((p) => new Date(p.last_updated)))
-        ).toLocaleString()
-      : "-";
+      ? products.reduce((latest, current) =>
+          new Date(current.last_updated) >
+          new Date(latest.last_updated)
+            ? current
+            : latest
+        )
+      : null;
+
+  const lastUpdated = latestProduct
+    ? formatDate(latestProduct.last_updated)
+    : "-";
   
   if (loading) return <Loader />;
 

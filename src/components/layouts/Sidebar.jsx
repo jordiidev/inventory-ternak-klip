@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
 
-export default function Sidebar() {
+export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
   return (
-    <div className="sidebar">
+    <div className={`sidebar ${sidebarOpen ? "open" : ""}`}>
       <h3>Ternak Klip</h3>
 
       <NavLink

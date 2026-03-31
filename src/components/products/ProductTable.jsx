@@ -32,7 +32,7 @@ export default function ProductTable({ products, loading }) {
                 </span>
               </td>
               <td>
-                {new Date(p.last_updated).toLocaleString()}
+                {p.last_updated_formatted}
               </td>
             </tr>
           ))}

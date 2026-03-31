@@ -22,7 +22,7 @@ export default function RecentProducts({ products }) {
               <td>{p.name}</td>
               <td>{p.stock_count}</td>
               <td>
-                {new Date(p.last_updated).toLocaleString()}
+                {p.last_updated_formatted}
               </td>
             </tr>
           ))}

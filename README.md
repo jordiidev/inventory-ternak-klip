@@ -28,6 +28,8 @@ src/
 │   └── supabaseClient.js
 ├── hooks/                      # Custom React hooks (useProducts)
 │   └── useProducts.js
+├── utils/                      # Custom Helper Function 
+│   └── formatDate.js
 │
 ├── App.jsx                     # Main application routing
 └── main.jsx
@@ -40,7 +42,7 @@ src/
 * 📦 Product listing with real-time updates (Supabase Realtime)
 * 🧭 Sidebar navigation with active route highlighting
 * 🔄 Auto refresh on database changes
-* 🎨 Clean UI with hover animations and modern layout
+* 🎨 Clean UI with hover animations, modern layout, and responsive design
 
 ---
 
@@ -49,8 +51,8 @@ src/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/inventory-dashboard.git
-cd inventory-dashboard
+git clone https://github.com/jordiidev/inventory-ternak-klip.git
+cd inventory-ternak-klip
 ```
 
 ### 2. Install dependencies
@@ -74,15 +76,18 @@ VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
 npm run dev
 ```
 
+### 5. Dont forget to turn on "Enable Realtime" in Supabase Table Configuration for Handle Realtime Data Changes .
+
+
 The app will be running at:
 
 ```
-http://localhost:5174
+http://localhost:5173
 ```
 
 ---
 
-# 🧠 AI Assistance
+# AI Assistance
 
 This project was developed with the help of AI tools (Claude).
 

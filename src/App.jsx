@@ -4,15 +4,18 @@ import Navbar from "./components/layouts/Navbar";
 import Dashboard from "./pages/Dashboard";
 import Products from "./pages/Products";
 import "./App.css";
+import { useState } from "react";
 
 export default function App() {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return (
     <BrowserRouter>
       <div className="app-container">
-        <Sidebar />
+        <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
         <div className="main">
-          <Navbar />
+          <Navbar setSidebarOpen={setSidebarOpen} />
 
           <div className="content">
             <Routes>
@@ -21,6 +24,11 @@ export default function App() {
             </Routes>
           </div>
         </div>
+
+        {/* overlay mobile */}
+        {sidebarOpen && (
+          <div className="overlay" onClick={() => setSidebarOpen(false)} />
+        )}
       </div>
     </BrowserRouter>
   );
